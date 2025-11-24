@@ -1,12 +1,12 @@
-# PRESCRIPTO - Doctor Appointment Booking App(MERN)
+# 🩺 Prescripto — Doctor Appointment Booking Application (MERN)
 
 A full-stack appointment booking system for doctors and hospitals built with the **MERN** stack (MongoDB, Express, React, Node.js). The app implements **three-level authentication** (Patient, Doctor, Admin), appointment management, doctor profiles, earnings view for doctors, admin controls, and **online payment gateway** integration for appointment fees.
 
 ---
 
-## Demo / Screenshot
+## 📸 App Preview
+<img width="1874" height="884" alt="image" src="https://github.com/user-attachments/assets/ac5fa971-e7d5-4493-a28a-95631097befd" />
 
-*(Add screenshots or demo links here if available — replace this section with a hosted demo or GIFs.)*
 
 ---
 
