@@ -5,7 +5,8 @@ A full-stack appointment booking system for doctors and hospitals built with the
 ---
 
 ## 📸 App Preview
-<img width="1874" height="884" alt="image" src="https://github.com/user-attachments/assets/ac5fa971-e7d5-4493-a28a-95631097befd" />
+<img width="1798" height="778" alt="image" src="https://github.com/user-attachments/assets/285c2f35-aabc-471f-864f-5d974daa3a7d" />
+
 
 
 ---
