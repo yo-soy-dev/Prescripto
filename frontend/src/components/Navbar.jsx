@@ -9,6 +9,17 @@ const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false);
   const { token, setToken, userData, adminUrl } = useContext(AppContext);
 
+  const adminEmail = "devanshtiwari817@gmail.com";
+
+  const [isAdmin, setIsAdmin] = useState(false);
+  useEffect(() => {
+    if (userData?.email) {
+      setIsAdmin(userData.email.toLowerCase() === adminEmail.toLowerCase());
+    } else {
+      setIsAdmin(false);
+    }
+  }, [userData]);
+
   const logout = () => {
     setToken(false)
     localStorage.removeItem('token')
@@ -40,14 +51,14 @@ const Navbar = () => {
       <div className="flex items-center gap-4">
         {token && userData ? (
         <>
-          {userData?.role === "admin" && (
-          <button
-            onClick={() => window.open(adminUrl, "_blank")}
-            className="bg-blue-600 text-white px-6 py-3 rounded-full font-light hidden md:block"
-          >
-            Admin Panel
-          </button>
-       )}
+          {isAdmin && (
+              <button
+                onClick={() => window.open("http://localhost:5174", "_blank")}
+                className="bg-blue-600 text-white px-6 py-3 rounded-full font-light hidden md:block"
+              >
+                Admin Panel
+              </button>
+            )}
           
         
           <div className="flex items-center gap-2 cursor-pointer group relative">
@@ -78,14 +89,14 @@ const Navbar = () => {
             <NavLink onClick={()=>setShowMenu(false)} to='/doctors'> <p className='px-4 py-2 rounded inline-block'>ALL DOCTORS</p> </NavLink>
             <NavLink onClick={()=>setShowMenu(false)} to='/about'> <p className='px-4 py-2 rounded inline-block'>ABOUT</p> </NavLink>
             <NavLink onClick={()=>setShowMenu(false)} to='/contact'> <p className='px-4 py-2 rounded inline-block'>CONTACT</p> </NavLink>
-            {userData?.role === "admin" && (
-            <p
-              onClick={() => window.open(adminUrl, "_blank")}
-              className="px-4 py-2 rounded inline-block text-blue-600 font-semibold cursor-pointer"
-            >
-              ADMIN PANEL
-            </p>
-          )}
+            {isAdmin && (
+              <button
+                onClick={() => window.open("http://localhost:5174", "_blank")}
+                className="bg-blue-600 text-white px-6 py-3 rounded-full font-light mt-4"
+              >
+                Admin Panel
+              </button>
+            )}
           </ul>
         </div>
       </div>
