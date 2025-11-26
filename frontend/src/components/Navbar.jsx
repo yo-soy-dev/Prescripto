@@ -53,7 +53,7 @@ const Navbar = () => {
         <>
           {isAdmin && (
               <button
-                onClick={() => window.open("http://localhost:5174", "_blank")}
+                onClick={() => window.open(adminUrl, "_blank")}
                 className="bg-blue-600 text-white px-6 py-3 rounded-full font-light hidden md:block"
               >
                 Admin Panel
@@ -91,7 +91,7 @@ const Navbar = () => {
             <NavLink onClick={()=>setShowMenu(false)} to='/contact'> <p className='px-4 py-2 rounded inline-block'>CONTACT</p> </NavLink>
             {isAdmin && (
               <button
-                onClick={() => window.open("http://localhost:5174", "_blank")}
+                onClick={() => window.open(adminUrl, "_blank")}
                 className="bg-blue-600 text-white px-6 py-3 rounded-full font-light mt-4"
               >
                 Admin Panel
