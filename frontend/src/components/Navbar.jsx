@@ -7,7 +7,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const [showMenu, setShowMenu] = useState(false);
-  const { token, setToken, userData } = useContext(AppContext);
+  const { token, setToken, userData, adminUrl } = useContext(AppContext);
 
   const logout = () => {
     setToken(false)
@@ -39,6 +39,17 @@ const Navbar = () => {
 
       <div className="flex items-center gap-4">
         {token && userData ? (
+        <>
+          {userData?.role === "admin" && (
+          <button
+            onClick={() => window.open(adminUrl, "_blank")}
+            className="bg-blue-600 text-white px-6 py-3 rounded-full font-light hidden md:block"
+          >
+            Admin Panel
+          </button>
+       )}
+          
+        /* {token && userData ? ( */
           <div className="flex items-center gap-2 cursor-pointer group relative">
             <img className="w-8 rounded-full" src={userData.image} alt="" />
             <img className="w-2.5" src={assets.dropdown_icon} alt="" />
@@ -50,6 +61,7 @@ const Navbar = () => {
               </div>
             </div>
           </div>
+      </>
         ) : (
           <button onClick={() => navigate("/login")} className="bg-blue-600 text-white px-8 py-3 rounded-full font-light hidden md:block">
             Create account
@@ -57,7 +69,7 @@ const Navbar = () => {
         )}
         <img onClick={()=>setShowMenu(true)} className="w-6 md:hidden" src={assets.menu_icon} alt="" />
         <div className={` ${showMenu ? 'fixed w-full' : 'h-0 w-0'} md:hidden right-0 top-0 bottom-0 z-20 overflow-hidden bg-white transition-all`}>
-          <div className="flex items-center justi px-5 py-6">
+          <div className="flex items-center justify-between px-5 py-6">
             <img className="w-36" src={assets.logo} alt="" />
             <img className="w-7" onClick={()=>setShowMenu(false)} src={assets.cross_icon} alt="" />
           </div>
@@ -65,7 +77,15 @@ const Navbar = () => {
             <NavLink onClick={()=>setShowMenu(false)} to='/'> <p className='px-4 py-2 rounded inline-block'>HOME</p> </NavLink>
             <NavLink onClick={()=>setShowMenu(false)} to='/doctors'> <p className='px-4 py-2 rounded inline-block'>ALL DOCTORS</p> </NavLink>
             <NavLink onClick={()=>setShowMenu(false)} to='/about'> <p className='px-4 py-2 rounded inline-block'>ABOUT</p> </NavLink>
-            <NavLink onClick={()=>setShowMenu(false)} to='contact'> <p className='px-4 py-2 rounded inline-block'>CONTACT</p> </NavLink>
+            <NavLink onClick={()=>setShowMenu(false)} to='/contact'> <p className='px-4 py-2 rounded inline-block'>CONTACT</p> </NavLink>
+            {userData?.role === "admin" && (
+            <p
+              onClick={() => window.open(adminUrl, "_blank")}
+              className="px-4 py-2 rounded inline-block text-blue-600 font-semibold cursor-pointer"
+            >
+              ADMIN PANEL
+            </p>
+          )}
           </ul>
         </div>
       </div>
